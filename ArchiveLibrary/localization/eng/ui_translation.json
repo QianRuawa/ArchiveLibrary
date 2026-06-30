@@ -1,0 +1,9 @@
+{
+    "I_LIKE_KASUMIZAWAR_MIYU": "🐇",
+    "CRIT_TEXT": "CRIT!",
+    "IMMUNE_TEXT": "Immune",
+    "IMMUNE_TYPE_NON_CARD": "Non-Card",
+    "IMMUNE_TYPE_CARD": "Card",
+    "COST_REDUCTION_NORMAL_HALF": "Cost is halved (rounded down)",
+    "COST_REDUCTION_SPECIFIC": "Card [gold]{0}[/gold] cost reduced by [blue]{1}[/blue]"
+}

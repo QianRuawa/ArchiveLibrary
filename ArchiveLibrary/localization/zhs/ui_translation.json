@@ -1,0 +1,9 @@
+{
+    "I_LIKE_KASUMIZAWAR_MIYU": "🐇",
+    "CRIT_TEXT": "暴击!",
+    "IMMUNE_TEXT": "免疫",
+    "IMMUNE_TYPE_NON_CARD": "非卡牌",
+    "IMMUNE_TYPE_CARD": "卡牌",
+    "COST_REDUCTION_NORMAL_HALF": "费用向下取半",
+    "COST_REDUCTION_SPECIFIC": "指定卡牌[gold]{0}[/gold]费用减少[blue]{1}[/blue]点"
+}

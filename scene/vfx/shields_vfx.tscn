@@ -1,0 +1,661 @@
+[gd_scene load_steps=20 format=4 uid="uid://skx23x6gj5c1"]
+
+[ext_resource type="PackedScene" uid="uid://cpny07u8wkfrw" path="res://scene/3d/Shields/shield.tscn" id="1_k2e3l"]
+
+[sub_resource type="World3D" id="World3D_xoc1s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q47pa"]
+albedo_color = Color(0, 0.478431, 1, 1)
+grow_amount = -16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkgr1"]
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+grow = true
+grow_amount = -1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xpe2"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bthiy"]
+_surfaces = [{
+"aabb": AABB(-2.21689, -2.1135, -2.20033, 4.43379, 4.227, 4.40066),
+"format": 34896613377,
+"index_count": 360,
+"index_data": PackedByteArray("BQABAAAAAQADAAIAAwAFAAQAAQAFAAMACwAHAAYABwAJAAgACQALAAoABwALAAkAEQANAAwADQAPAA4ADwARABAADQARAA8AFwATABIAEwAVABQAFQAXABYAEwAXABUAHQAZABgAGQAbABoAGwAdABwAGQAdABsAIwAfAB4AHwAhACAAIQAjACIAHwAjACEAKQAlACQAJQAnACYAJwApACgAJQApACcALwArACoAKwAtACwALQAvAC4AKwAvAC0ANQAxADAAMQAzADIAMwA1ADQAMQA1ADMAOwA3ADYANwA5ADgAOQA7ADoANwA7ADkAQQA9ADwAPQA/AD4APwBBAEAAPQBBAD8ARwBDAEIAQwBFAEQARQBHAEYAQwBHAEUATQBJAEgASQBLAEoASwBNAEwASQBNAEsAUwBPAE4ATwBRAFAAUQBTAFIATwBTAFEAWQBVAFQAVQBXAFYAVwBZAFgAVQBZAFcAXwBbAFoAWwBdAFwAXQBfAF4AWwBfAF0AZQBhAGAAYQBjAGIAYwBlAGQAYQBlAGMAawBnAGYAZwBpAGgAaQBrAGoAZwBrAGkAcQBtAGwAbQBvAG4AbwBxAHAAbQBxAG8AdwBzAHIAcwB1AHQAdQB3AHYAcwB3AHUAfQB5AHgAeQB7AHoAewB9AHwAeQB9AHsAgwB/AH4AfwCBAIAAgQCDAIIAfwCDAIEAiQCFAIQAhQCHAIYAhwCJAIgAhQCJAIcAjwCLAIoAiwCNAIwAjQCPAI4AiwCPAI0AlQCRAJAAkQCTAJIAkwCVAJQAkQCVAJMAmwCXAJYAlwCZAJgAmQCbAJoAlwCbAJkAoQCdAJwAnQCfAJ4AnwChAKAAnQChAJ8ApwCjAKIAowClAKQApQCnAKYAowCnAKUArQCpAKgAqQCrAKoAqwCtAKwAqQCtAKsAswCvAK4ArwCxALAAsQCzALIArwCzALEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 180,
+"vertex_data": PackedByteArray("YoTpBzO7AAAhfSIXs9EAAGFkSB2j1QAAp1IiF8vDAADoWekHS60AAFZyAABaqgAA+7EiF2bAAAD8nukHfrIAAMKjAAAsmgAAPbnpBxaOAAA8zCIX/psAAE7ISB3ttAAAYZCOJsrfAAChqo4mMtcAAKW68DlI3wAA47FoTrLtAACil2hOSvYAACOI8DnR7wAAfN+OJueNAAB8344mF3IAABDs8Dk+ZQAA9/ZpThdyAAD39mlO540AABDs8DnAmgAAPMwiFwBkAAA9uekH6HEAAMKjAADSZQAA/J7pB4BNAAD7sSIXmD8AAE7ISB0RSwAAd0npB3+WAAD8MSIXf5YAAJ8mSR3/fwAA/DEiF39pAAB3SekHf2kAAMtTAAD/fwAAoiqOJkutAADbOo4my8MAAC048Dmj1QAA3CdoTrPRAACjF2hOM7sAAPYY8DlaqgAA6FnpB7NSAACnUiIXMzwAAGFkSB1bKgAAIX0iF0suAABihOkHy0QAAFZyAACkVQAA2zqOJjM8AACiKo4ms1IAAPYY8DmkVQAAoxdoTstEAADcJ2hOSy4AAC048DlbKgAAoaqOJswoAABhkI4mNCAAACOI8DktEAAAopdoTrQJAADjsWhOTBIAAKW68Dm2IAAAgvteZ/6bAAD+//9/Fo4AACL9sJcsmgAAQfSgmH6yAADF7/9/ZsAAAIL0TmjttAAA/v//f+hxAACC+15nAGQAAIL0TmgRSwAAxe//f5g/AABB9KCYgE0AACL9sJfSZQAAvYteZwD/AABAmv9/AP8AAPWNsJf//wAAQXSgmAD/AAC+Zf9/AP8AAAlyTmj//wAA2rT/f0v2AACXwF5nsu0AAPfVTmhI3wAAVN//fzPXAACW06CYy98AAGC/sJfR7wAAvQteZ36yAAA5EP9/ZsAAAHwLsJfttAAAfASgmP6bAAAAAP9/Fo4AANwCTmgsmgAAqiD/fzPXAABoLF5ny98AAJ5ATmjR7wAAJEv/f0v2AABnP6CYsu0AAAcqsJdI3wAAaCxeZzMgAACqIP9/yygAAAcqsJe2IAAAZz+gmEwSAAAkS/9/swkAAJ5ATmgtEAAAORD/f5g/AAC9C15ngE0AANwCTmjSZQAAAAD/f+hxAAB8BKCYAGQAAHwLsJcRSwAAl8BeZ0wSAADatP9/swkAAGC/sJctEAAAltOgmDMgAABU3/9/yygAAPfVTmi2IAAAQJr/f/4AAAC9i15n/gAAAAlyTmgAAAAAvmX/f/4AAABBdKCY/gAAAPWNsJcAAAAAItiWsbPRAABb6JaxM7sAAAjnDsZaqgAAXNVw2UutAAAjxXDZy8MAANHHDsaj1QAAG06WsbLtAABcaJaxSvYAANt3DsbR7wAAnW9w2crfAABdVXDZMtcAAFlFDsZI3wAABwmVsRdyAAAHCZWx540AAO4TDsbAmgAAgiBw2eeNAACCIHDZF3IAAO4TDsY+ZQAAXGiWsbQJAAAbTpaxTBIAAFlFDsa2IAAAXVVw2cwoAACdb3DZNCAAANt3DsYtEAAAW+iWsctEAAAi2JaxSy4AANHHDsZbKgAAI8Vw2TM8AABc1XDZs1IAAAjnDsakVQAAV63c6MvDAAAWphX4S60AAKiN//9aqgAAnHsV+DO7AADdgtzos9EAAJ2btuKj1QAAh7YV+H+WAAACztzof5YAAF/ZteL/fwAAAs7c6H9pAACHthX4f2kAADOs/v//fwAAA07c6GbAAAACYRX4frIAADxc/v8smgAAwUYV+BaOAADCM9zo/psAALA3tuLttAAAwjPc6ABkAADBRhX46HEAADxc/v/SZQAAAmEV+IBNAAADTtzomD8AALA3tuIRSwAA3YLc6EsuAACcexX4y0QAAKiN//+kVQAAFqYV+LNSAABXrdzoMzwAAJ2btuJbKgAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_miq7s"]
+resource_name = "护盾_棱角球_003"
+_surfaces = [{
+"aabb": AABB(-2.21689, -2.1135, -2.20033, 4.43379, 4.227, 4.40066),
+"attribute_data": PackedByteArray("oSrX68UmJ+WKHkfkf/An5aLs1+v+72fzUTYn5XUy1+vQNWfzLVnX61BVJ+UWTUfkripg3mgyYN5HN6/XaDL/0K4q/9DPJa/XOllg3vNgYN7SZa/X82D/0DpZ/9BbVK/X3WQn5QBh1+tbZGfzuIfX69yDJ+Whe0fkz+TX6/LgJ+W42Efk9MEn5Re+1+tywWfz3ORg3pXsYN518a/Xlez/0Nzk/9D936/XRLbX62eyJ+UtqkfkaJMn5YyP1+vnkmfzUbZg3gq+YN7pwq/XCr7/0FG2/9Bysa/XxYdg3n6PYN5elK/Xfo//0MWH/9Dmgq/XUFU4yi1ZiMPRVfe7l03XvLpJiMMWTRjLAGGIw91kOMoXbRjLcnCIw5Zs17xbZPe7xSY4yqEqiMNGJ/e7DB/XvC8biMOKHhjLdTKIw1E2OMqMPhjL50GIwwo+17zQNfe78uA4ys/kiMN04fe7OdnXvF3ViMO42BjLo+yIw3/wOMq6+BjLXBOIw38P17xFB/e7Z7I4ykS2iMPosve7rqrXvNGmiMMtqhjLF76Iw/TBOMouyhjLic2Iw63J17xywfe73IM4yriHiMNdhPe7InzXvEZ4iMOhexjLjI+Iw2iTOMqjmxjL/p6IwyGb17znkve79EEQtq1JELaNTmCvrUmwqPRBsKgVPWCvaRMQtiIbELYBIGCvIhuwqGkTsKiJDmCvls0QtlDVELYv2mCvUNWwqJbNsKi3yGCvC58QtsSmELajq2CvxKawqAufsKgsmmCvgHAQtjl4ELYYfWCvOXiwqIBwsKiga2CvCj7poedBOZuMPqiTLxs5mwwf6aFGJ8miukk5m5dN6aHRVcmilmzpoXJwOZsXbaiTfw/poVwTOZsAEKiTXdU5mznZ6aF04cmircnpoYnNOZsuyqiT0aY5m66q6aHossmiIZvpof6eOZujm6iTRng5myJ86aFdhMmi"),
+"format": 34896613399,
+"index_count": 360,
+"index_data": PackedByteArray("BQABAAAAAQADAAIAAwAFAAQAAQAFAAMACwAHAAYABwAJAAgACQALAAoABwALAAkAEQANAAwADQAPAA4ADwARABAADQARAA8AFwATABIAEwAVABQAFQAXABYAEwAXABUAHQAZABgAGQAbABoAGwAdABwAGQAdABsAIwAfAB4AHwAhACAAIQAjACIAHwAjACEAKQAlACQAJQAnACYAJwApACgAJQApACcALwArACoAKwAtACwALQAvAC4AKwAvAC0ANQAxADAAMQAzADIAMwA1ADQAMQA1ADMAOwA3ADYANwA5ADgAOQA7ADoANwA7ADkAQQA9ADwAPQA/AD4APwBBAEAAPQBBAD8ARwBDAEIAQwBFAEQARQBHAEYAQwBHAEUATQBJAEgASQBLAEoASwBNAEwASQBNAEsAUwBPAE4ATwBRAFAAUQBTAFIATwBTAFEAWQBVAFQAVQBXAFYAVwBZAFgAVQBZAFcAXwBbAFoAWwBdAFwAXQBfAF4AWwBfAF0AZQBhAGAAYQBjAGIAYwBlAGQAYQBlAGMAawBnAGYAZwBpAGgAaQBrAGoAZwBrAGkAcQBtAGwAbQBvAG4AbwBxAHAAbQBxAG8AdwBzAHIAcwB1AHQAdQB3AHYAcwB3AHUAfQB5AHgAeQB7AHoAewB9AHwAeQB9AHsAgwB/AH4AfwCBAIAAgQCDAIIAfwCDAIEAiQCFAIQAhQCHAIYAhwCJAIgAhQCJAIcAjwCLAIoAiwCNAIwAjQCPAI4AiwCPAI0AlQCRAJAAkQCTAJIAkwCVAJQAkQCVAJMAmwCXAJYAlwCZAJgAmQCbAJoAlwCbAJkAoQCdAJwAnQCfAJ4AnwChAKAAnQChAJ8ApwCjAKIAowClAKQApQCnAKYAowCnAKUArQCpAKgAqQCrAKoAqwCtAKwAqQCtAKsAswCvAK4ArwCxALAAsQCzALIArwCzALEA"),
+"material": SubResource("StandardMaterial3D_6xpe2"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 180,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bthiy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iupor"]
+albedo_color = Color(0, 0.568627, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2sur"]
+shading_mode = 0
+albedo_color = Color(0, 0.301961, 1, 1)
+grow = true
+grow_amount = -2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w33h1"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r1hqx"]
+_surfaces = [{
+"aabb": AABB(-2.21689, -2.1135, -2.20033, 4.43379, 4.227, 4.40066),
+"format": 34896613377,
+"index_count": 360,
+"index_data": PackedByteArray("BQABAAAAAQADAAIAAwAFAAQAAQAFAAMACwAHAAYABwAJAAgACQALAAoABwALAAkAEQANAAwADQAPAA4ADwARABAADQARAA8AFwATABIAEwAVABQAFQAXABYAEwAXABUAHQAZABgAGQAbABoAGwAdABwAGQAdABsAIwAfAB4AHwAhACAAIQAjACIAHwAjACEAKQAlACQAJQAnACYAJwApACgAJQApACcALwArACoAKwAtACwALQAvAC4AKwAvAC0ANQAxADAAMQAzADIAMwA1ADQAMQA1ADMAOwA3ADYANwA5ADgAOQA7ADoANwA7ADkAQQA9ADwAPQA/AD4APwBBAEAAPQBBAD8ARwBDAEIAQwBFAEQARQBHAEYAQwBHAEUATQBJAEgASQBLAEoASwBNAEwASQBNAEsAUwBPAE4ATwBRAFAAUQBTAFIATwBTAFEAWQBVAFQAVQBXAFYAVwBZAFgAVQBZAFcAXwBbAFoAWwBdAFwAXQBfAF4AWwBfAF0AZQBhAGAAYQBjAGIAYwBlAGQAYQBlAGMAawBnAGYAZwBpAGgAaQBrAGoAZwBrAGkAcQBtAGwAbQBvAG4AbwBxAHAAbQBxAG8AdwBzAHIAcwB1AHQAdQB3AHYAcwB3AHUAfQB5AHgAeQB7AHoAewB9AHwAeQB9AHsAgwB/AH4AfwCBAIAAgQCDAIIAfwCDAIEAiQCFAIQAhQCHAIYAhwCJAIgAhQCJAIcAjwCLAIoAiwCNAIwAjQCPAI4AiwCPAI0AlQCRAJAAkQCTAJIAkwCVAJQAkQCVAJMAmwCXAJYAlwCZAJgAmQCbAJoAlwCbAJkAoQCdAJwAnQCfAJ4AnwChAKAAnQChAJ8ApwCjAKIAowClAKQApQCnAKYAowCnAKUArQCpAKgAqQCrAKoAqwCtAKwAqQCtAKsAswCvAK4ArwCxALAAsQCzALIArwCzALEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 180,
+"vertex_data": PackedByteArray("YoTpBzO7AAAhfSIXs9EAAGFkSB2j1QAAp1IiF8vDAADoWekHS60AAFZyAABaqgAA+7EiF2bAAAD8nukHfrIAAMKjAAAsmgAAPbnpBxaOAAA8zCIX/psAAE7ISB3ttAAAYZCOJsrfAAChqo4mMtcAAKW68DlI3wAA47FoTrLtAACil2hOSvYAACOI8DnR7wAAfN+OJueNAAB8344mF3IAABDs8Dk+ZQAA9/ZpThdyAAD39mlO540AABDs8DnAmgAAPMwiFwBkAAA9uekH6HEAAMKjAADSZQAA/J7pB4BNAAD7sSIXmD8AAE7ISB0RSwAAd0npB3+WAAD8MSIXf5YAAJ8mSR3/fwAA/DEiF39pAAB3SekHf2kAAMtTAAD/fwAAoiqOJkutAADbOo4my8MAAC048Dmj1QAA3CdoTrPRAACjF2hOM7sAAPYY8DlaqgAA6FnpB7NSAACnUiIXMzwAAGFkSB1bKgAAIX0iF0suAABihOkHy0QAAFZyAACkVQAA2zqOJjM8AACiKo4ms1IAAPYY8DmkVQAAoxdoTstEAADcJ2hOSy4AAC048DlbKgAAoaqOJswoAABhkI4mNCAAACOI8DktEAAAopdoTrQJAADjsWhOTBIAAKW68Dm2IAAAgvteZ/6bAAD+//9/Fo4AACL9sJcsmgAAQfSgmH6yAADF7/9/ZsAAAIL0TmjttAAA/v//f+hxAACC+15nAGQAAIL0TmgRSwAAxe//f5g/AABB9KCYgE0AACL9sJfSZQAAvYteZwD/AABAmv9/AP8AAPWNsJf//wAAQXSgmAD/AAC+Zf9/AP8AAAlyTmj//wAA2rT/f0v2AACXwF5nsu0AAPfVTmhI3wAAVN//fzPXAACW06CYy98AAGC/sJfR7wAAvQteZ36yAAA5EP9/ZsAAAHwLsJfttAAAfASgmP6bAAAAAP9/Fo4AANwCTmgsmgAAqiD/fzPXAABoLF5ny98AAJ5ATmjR7wAAJEv/f0v2AABnP6CYsu0AAAcqsJdI3wAAaCxeZzMgAACqIP9/yygAAAcqsJe2IAAAZz+gmEwSAAAkS/9/swkAAJ5ATmgtEAAAORD/f5g/AAC9C15ngE0AANwCTmjSZQAAAAD/f+hxAAB8BKCYAGQAAHwLsJcRSwAAl8BeZ0wSAADatP9/swkAAGC/sJctEAAAltOgmDMgAABU3/9/yygAAPfVTmi2IAAAQJr/f/4AAAC9i15n/gAAAAlyTmgAAAAAvmX/f/4AAABBdKCY/gAAAPWNsJcAAAAAItiWsbPRAABb6JaxM7sAAAjnDsZaqgAAXNVw2UutAAAjxXDZy8MAANHHDsaj1QAAG06WsbLtAABcaJaxSvYAANt3DsbR7wAAnW9w2crfAABdVXDZMtcAAFlFDsZI3wAABwmVsRdyAAAHCZWx540AAO4TDsbAmgAAgiBw2eeNAACCIHDZF3IAAO4TDsY+ZQAAXGiWsbQJAAAbTpaxTBIAAFlFDsa2IAAAXVVw2cwoAACdb3DZNCAAANt3DsYtEAAAW+iWsctEAAAi2JaxSy4AANHHDsZbKgAAI8Vw2TM8AABc1XDZs1IAAAjnDsakVQAAV63c6MvDAAAWphX4S60AAKiN//9aqgAAnHsV+DO7AADdgtzos9EAAJ2btuKj1QAAh7YV+H+WAAACztzof5YAAF/ZteL/fwAAAs7c6H9pAACHthX4f2kAADOs/v//fwAAA07c6GbAAAACYRX4frIAADxc/v8smgAAwUYV+BaOAADCM9zo/psAALA3tuLttAAAwjPc6ABkAADBRhX46HEAADxc/v/SZQAAAmEV+IBNAAADTtzomD8AALA3tuIRSwAA3YLc6EsuAACcexX4y0QAAKiN//+kVQAAFqYV+LNSAABXrdzoMzwAAJ2btuJbKgAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_661ag"]
+resource_name = "护盾_棱角球_004"
+_surfaces = [{
+"aabb": AABB(-2.21689, -2.1135, -2.20033, 4.43379, 4.227, 4.40066),
+"attribute_data": PackedByteArray("oSrX68UmJ+WKHkfkf/An5aLs1+v+72fzUTYn5XUy1+vQNWfzLVnX61BVJ+UWTUfkripg3mgyYN5HN6/XaDL/0K4q/9DPJa/XOllg3vNgYN7SZa/X82D/0DpZ/9BbVK/X3WQn5QBh1+tbZGfzuIfX69yDJ+Whe0fkz+TX6/LgJ+W42Efk9MEn5Re+1+tywWfz3ORg3pXsYN518a/Xlez/0Nzk/9D936/XRLbX62eyJ+UtqkfkaJMn5YyP1+vnkmfzUbZg3gq+YN7pwq/XCr7/0FG2/9Bysa/XxYdg3n6PYN5elK/Xfo//0MWH/9Dmgq/XUFU4yi1ZiMPRVfe7l03XvLpJiMMWTRjLAGGIw91kOMoXbRjLcnCIw5Zs17xbZPe7xSY4yqEqiMNGJ/e7DB/XvC8biMOKHhjLdTKIw1E2OMqMPhjL50GIwwo+17zQNfe78uA4ys/kiMN04fe7OdnXvF3ViMO42BjLo+yIw3/wOMq6+BjLXBOIw38P17xFB/e7Z7I4ykS2iMPosve7rqrXvNGmiMMtqhjLF76Iw/TBOMouyhjLic2Iw63J17xywfe73IM4yriHiMNdhPe7InzXvEZ4iMOhexjLjI+Iw2iTOMqjmxjL/p6IwyGb17znkve79EEQtq1JELaNTmCvrUmwqPRBsKgVPWCvaRMQtiIbELYBIGCvIhuwqGkTsKiJDmCvls0QtlDVELYv2mCvUNWwqJbNsKi3yGCvC58QtsSmELajq2CvxKawqAufsKgsmmCvgHAQtjl4ELYYfWCvOXiwqIBwsKiga2CvCj7poedBOZuMPqiTLxs5mwwf6aFGJ8miukk5m5dN6aHRVcmilmzpoXJwOZsXbaiTfw/poVwTOZsAEKiTXdU5mznZ6aF04cmircnpoYnNOZsuyqiT0aY5m66q6aHossmiIZvpof6eOZujm6iTRng5myJ86aFdhMmi"),
+"format": 34896613399,
+"index_count": 360,
+"index_data": PackedByteArray("BQABAAAAAQADAAIAAwAFAAQAAQAFAAMACwAHAAYABwAJAAgACQALAAoABwALAAkAEQANAAwADQAPAA4ADwARABAADQARAA8AFwATABIAEwAVABQAFQAXABYAEwAXABUAHQAZABgAGQAbABoAGwAdABwAGQAdABsAIwAfAB4AHwAhACAAIQAjACIAHwAjACEAKQAlACQAJQAnACYAJwApACgAJQApACcALwArACoAKwAtACwALQAvAC4AKwAvAC0ANQAxADAAMQAzADIAMwA1ADQAMQA1ADMAOwA3ADYANwA5ADgAOQA7ADoANwA7ADkAQQA9ADwAPQA/AD4APwBBAEAAPQBBAD8ARwBDAEIAQwBFAEQARQBHAEYAQwBHAEUATQBJAEgASQBLAEoASwBNAEwASQBNAEsAUwBPAE4ATwBRAFAAUQBTAFIATwBTAFEAWQBVAFQAVQBXAFYAVwBZAFgAVQBZAFcAXwBbAFoAWwBdAFwAXQBfAF4AWwBfAF0AZQBhAGAAYQBjAGIAYwBlAGQAYQBlAGMAawBnAGYAZwBpAGgAaQBrAGoAZwBrAGkAcQBtAGwAbQBvAG4AbwBxAHAAbQBxAG8AdwBzAHIAcwB1AHQAdQB3AHYAcwB3AHUAfQB5AHgAeQB7AHoAewB9AHwAeQB9AHsAgwB/AH4AfwCBAIAAgQCDAIIAfwCDAIEAiQCFAIQAhQCHAIYAhwCJAIgAhQCJAIcAjwCLAIoAiwCNAIwAjQCPAI4AiwCPAI0AlQCRAJAAkQCTAJIAkwCVAJQAkQCVAJMAmwCXAJYAlwCZAJgAmQCbAJoAlwCbAJkAoQCdAJwAnQCfAJ4AnwChAKAAnQChAJ8ApwCjAKIAowClAKQApQCnAKYAowCnAKUArQCpAKgAqQCrAKoAqwCtAKwAqQCtAKsAswCvAK4ArwCxALAAsQCzALIArwCzALEA"),
+"material": SubResource("StandardMaterial3D_w33h1"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 180,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_r1hqx")
+
+[sub_resource type="Animation" id="Animation_p4lbf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.261799, 0, -1.13446)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow_amount")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-16.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001/AngularBalls_up:material_override:grow_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.8]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002/AngularBalls_down:material_override:grow_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.5]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.16470589)]
+}
+
+[sub_resource type="Animation" id="Animation_u6hr2"]
+resource_name = "begin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.23, 0.23),
+"update": 0,
+"values": [-2.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001/AngularBalls_up:material_override:grow_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.23, 0.23),
+"update": 0,
+"values": [-2.3, -0.3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.628319), Vector3(0, 6.28319, 0.628319)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.2, 1.2),
+"update": 0,
+"values": [Vector3(0.261799, 6.28319, -1.13446), Vector3(0.261799, 0, -1.13446)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.23, 0.23),
+"update": 0,
+"values": [-2.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002/AngularBalls_down:material_override:grow_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.23, 0.23),
+"update": 0,
+"values": [-2.3, -0.3]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/3D_shield/Animation_vfx_shields")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["new_animation", -1, 0.3, false],
+"method": &"play"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.16470589)]
+}
+
+[sub_resource type="Animation" id="Animation_yuxsh"]
+resource_name = "closing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1.2, 1.2),
+"update": 0,
+"values": [Vector3(0, 0, 1.67552), Vector3(0, 6.28319, 7.9587)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, -1.5, 5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001/AngularBalls_up:material_override:grow_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [-0.3, -1.8, 4.05]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1.5, 1.5),
+"update": 0,
+"values": [Vector3(0.261799, 0, -1.13446), Vector3(0.261799, 6.28319, -7.41765)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow_amount")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, -2.5, 5.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002/AngularBalls_down:material_override:grow_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [-0.3, -2.5, 4.05]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4v2et"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.628319), Vector3(0, 6.28319, 0.628319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0, -1.13446), Vector3(0.261799, 6.28319, -1.13446)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25), Vector3(1.05, 1.05, 1.05), Vector3(1.25, 1.25, 1.25)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001:material_override:grow")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002:material_override:grow")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_001/AngularBalls_up:material_override:grow_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/3D_shield/棱角球_002/AngularBalls_down:material_override:grow_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.3]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0.2627451), Color(1, 1, 1, 0.16470589)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xoc1s"]
+_data = {
+&"RESET": SubResource("Animation_p4lbf"),
+&"begin": SubResource("Animation_u6hr2"),
+&"closing": SubResource("Animation_yuxsh"),
+&"new_animation": SubResource("Animation_4v2et")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ll5nm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dyih"]
+blend_mode = 2
+
+[node name="shields" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+modulate = Color(1, 1, 1, 0.16470589)
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+pivot_offset = Vector2(200, 200)
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_xoc1s")
+transparent_bg = true
+msaa_3d = 1
+mesh_lod_threshold = 0.0
+scaling_3d_scale = 0.9
+anisotropic_filtering_level = 1
+size = Vector2i(400, 400)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.47983)
+
+[node name="3D_shield" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_k2e3l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="棱角球_001" parent="SubViewportContainer/SubViewport/3D_shield" index="0"]
+material_override = SubResource("StandardMaterial3D_q47pa")
+
+[node name="AngularBalls_up" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/3D_shield/棱角球_001" index="0"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pkgr1")
+mesh = SubResource("ArrayMesh_miq7s")
+skeleton = NodePath("")
+
+[node name="棱角球_002" parent="SubViewportContainer/SubViewport/3D_shield" index="1"]
+transform = Transform3D(0.5282774, 1.1328826, 0, -1.0942807, 0.51027685, -0.32352334, -0.2932112, 0.13672806, 1.2074075, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_iupor")
+
+[node name="AngularBalls_down" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/3D_shield/棱角球_002" index="0"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a2sur")
+mesh = SubResource("ArrayMesh_661ag")
+skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/3D_shield"]
+
+[node name="Animation_vfx_shields" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/3D_shield"]
+root_node = NodePath("../../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_xoc1s")
+}
+autoplay = "begin"
+speed_scale = 0.5
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-2, 1.78814e-07, 5.32907e-15, 0, -8.74228e-08, 2, 1.78814e-07, 2, 8.74228e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ll5nm")
+material = SubResource("StandardMaterial3D_5dyih")
+
+[editable path="SubViewportContainer/SubViewport/3D_shield"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcoxoq2fi08w4"]
+
+[sub_resource type="Gradient" id="Gradient_fq2cm"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_geet2"]
+gradient = SubResource("Gradient_fq2cm")
+fill_to = Vector2(1, 0.7905983)
+
+[sub_resource type="Animation" id="Animation_mbi3p"]
+resource_name = "Bang"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.2333333, 2.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t6dth"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ykto"]
+_data = {
+&"Bang": SubResource("Animation_mbi3p"),
+&"RESET": SubResource("Animation_t6dth")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -910.2179
+offset_top = -564.0
+offset_right = 114.90662
+offset_bottom = 149.75061
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.0882835, 4.0882835)
+pivot_offset = Vector2(360, 306)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_geet2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3ykto")
+}
+autoplay = "Bang"
+speed_scale = 1.3

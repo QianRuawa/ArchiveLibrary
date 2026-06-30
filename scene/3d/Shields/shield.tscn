@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpny07u8wkfrw"]
+
+[ext_resource type="PackedScene" uid="uid://cugv2ldfrkvvr" path="res://scene/3d/Shields/shield.glb" id="1_mcq8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cetwb"]
+
+[node name="3D_shield" instance=ExtResource("1_mcq8u")]
+
+[node name="棱角球_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_cetwb")
+
+[node name="棱角球_002" parent="." index="1"]
+transform = Transform3D(0.175963, -0.348225, -1.24742, -1.1453, 0.54591, -0.313951, 0.604665, 1.13535, -0.231643, 0, 0, 0)
