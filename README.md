@@ -3,7 +3,7 @@
 [RitsuLib](https://github.com/BAKAOLC/STS2-RitsuLib)
 
 **详细教程**
-[ArchiveLibrary-优化指南]https://github.com/QianRuawa/ArchiveLibrary-Optimization-Guide
+[ArchiveLibrary-优化指南](https://github.com/QianRuawa/ArchiveLibrary-Optimization-Guide)
 
 **内容**
 - 可继承修改adverse/benefit/crowdControl/particular
