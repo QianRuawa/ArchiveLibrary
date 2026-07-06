@@ -1,4 +1,3 @@
-using ArchiveLibrary.Scripts.Localization;
 using ArchiveLibrary.Scripts.Visual;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -45,7 +44,7 @@ public class ImmuneDamageParticular : ModPowerTemplate, IPowerCategorizable
 
     public override int DisplayAmount => 1;
 
-    private string ImmuneTypeText => UIHelper.Get(_nonCardMode ? "IMMUNE_TYPE_NON_CARD" : "IMMUNE_TYPE_CARD");
+    private string ImmuneTypeText => EntiyArchiveLibrary.UI.GetText(_nonCardMode ? "IMMUNE_TYPE_NON_CARD" : "IMMUNE_TYPE_CARD") ?? "非卡牌";
 
     public virtual string IconId => "ImmuneDamage";
     public PowerCategory Category => PowerCategory.Particular;
@@ -78,13 +77,13 @@ public class ImmuneDamageParticular : ModPowerTemplate, IPowerCategorizable
         if (_nonCardMode && !fromPlayer)
         {
             Flash();
-            NImmuneVfx.Display(Owner);
+            NImmuneVfx.Display(Owner, EntiyArchiveLibrary.UI.GetText("IMMUNE_DAMAGE"));
             return 0m;
         }
         if (!_nonCardMode && fromPlayer)
         {
             Flash();
-            NImmuneVfx.Display(Owner);
+            NImmuneVfx.Display(Owner, EntiyArchiveLibrary.UI.GetText("IMMUNE_DAMAGE"));
             return 0m;
         }
         return amount;

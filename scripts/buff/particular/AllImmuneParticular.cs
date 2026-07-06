@@ -31,7 +31,7 @@ public class AllImmuneParticular : ModPowerTemplate, IPowerCategorizable
     {
         if (target != Owner || amount <= 0m) return amount;
         Flash();
-        NImmuneVfx.Display(Owner);
+        NImmuneVfx.Display(Owner, EntiyArchiveLibrary.UI.GetText("IMMUNE_ALL"));
         return 0m;
     }
 }

@@ -24,7 +24,7 @@ public static class DebuffBlockPatch
         if (target.GetPower<AllImmuneParticular>() == null) return;
 
         LibraryLogger.Debug($"什亭之匣：{target} 免疫状态 [{power.Id.Entry}]");
-        NImmuneVfx.Display(target);
+        NImmuneVfx.Display(target, EntiyArchiveLibrary.UI.GetText("IMMUNE_DEBUFF"));
         amount = 0m;
     }
 }

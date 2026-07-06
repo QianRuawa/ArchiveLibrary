@@ -19,7 +19,7 @@ public static class StunImmunityPatch
         if (creature.GetPower<ControlImmunityParticular>() != null)
         {
             LibraryLogger.Debug($"控制免疫：{creature} 免疫击晕");
-            NImmuneVfx.Display(creature);
+            NImmuneVfx.Display(creature, EntiyArchiveLibrary.UI.GetText("IMMUNE_NEGATIVE"));
             return false;
         }
         return true;
@@ -35,7 +35,7 @@ public static class EndTurnImmunityPatch
         if (!canBackOut && player.Creature?.GetPower<ControlImmunityParticular>() != null)
         {
             LibraryLogger.Debug($"控制免疫：{player} 免疫强制结束回合");
-            if (player.Creature != null) NImmuneVfx.Display(player.Creature);
+            if (player.Creature != null) NImmuneVfx.Display(player.Creature, EntiyArchiveLibrary.UI.GetText("IMMUNE_NEGATIVE"));
             return false;
         }
         return true;

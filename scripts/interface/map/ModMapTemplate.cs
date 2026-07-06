@@ -1,3 +1,4 @@
+using ArchiveLibrary.Scripts.Act;
 using ArchiveLibrary.Scripts.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Map;
@@ -69,6 +70,9 @@ public abstract class ModMapTemplate : ActMap
     internal static readonly List<MimicBossDef> MimicBosses = new();
 
     public readonly record struct MimicBossDef(int Col, int Row, string IconPath, string OutlinePath, Color? Tint, float Scale);
+
+    private static readonly PropertyInfo? _runStateProp = typeof(RunManager)
+        .GetProperty("State", BindingFlags.NonPublic | BindingFlags.Instance);
 
     /// <summary>拟态Boss默认色调（未指定时用此值，null=不染色）</summary>
     protected Color? DefaultMimicTint { get; set; }
@@ -167,11 +171,18 @@ public abstract class ModMapTemplate : ActMap
 
     // ===== 粒子生成（地图加载后自动调用）=====
 
-    /// <summary>使用缓存的粒子路径在根节点上生成特效（供 SL 读档使用，不依赖地图实例）。</summary>
-    internal static void RegenerateFromCache(Node rootNode)
+    /// <summary>使用缓存的粒子路径在当前地图屏幕上生成特效（供 SL 读档使用，不依赖地图实例）。</summary>
+    internal static void RegenerateFromCache(Node _)
     {
         if (string.IsNullOrEmpty(LastParticleScenePath)) return;
-        var tree = rootNode.GetTree();
+        // 只对 ModActTemplate 层级生成粒子（避免缓存污染其他 Act）
+        var runState = _runStateProp?.GetValue(RunManager.Instance) as RunState;
+        if (runState?.Act is not ModActTemplate act) { LastParticleScenePath = null; return; }
+        // 当前 Act 没有自定义粒子时清除缓存并跳过
+        if (act.CustomMapParticlePath == null) { LastParticleScenePath = null; return; }
+        var mapScreen = MegaCrit.Sts2.Core.Nodes.Screens.Map.NMapScreen.Instance;
+        if (mapScreen == null || !GodotObject.IsInstanceValid(mapScreen)) return;
+        var tree = mapScreen.GetTree();
         if (tree.GetNodesInGroup("mod_map_effects").Count > 0) return;
         var bgScene = ResourceLoader.Load<PackedScene>(LastParticleScenePath);
         if (bgScene == null) return;
@@ -217,14 +228,16 @@ public abstract class ModMapTemplate : ActMap
             foreach (var c in node.GetChildren())
                 traverse(c);
         };
-        traverse(rootNode);
+        traverse(mapScreen);
     }
 
     /// <summary>在地图节点上生成粒子/特效。构造后手动调用。</summary>
-    public void GenerateEffects(Node rootNode)
+    public void GenerateEffects(Node _)
     {
         LibraryLogger.Info($"粒子系统: 场景={ParticleScenePath ?? "空"}");
         if (string.IsNullOrEmpty(ParticleScenePath)) { LibraryLogger.Info("粒子系统: 路径为空，跳过"); return; }
+        // 只对 ModActTemplate 层级生成粒子
+        if (_runStateProp?.GetValue(RunManager.Instance) is not RunState rs || rs.Act is not ModActTemplate) return;
 
         var bgScene = ResourceLoader.Load<PackedScene>(ParticleScenePath);
         if (bgScene == null) { LibraryLogger.Info($"粒子系统: 场景加载失败 {ParticleScenePath}"); return; }
@@ -237,11 +250,13 @@ public abstract class ModMapTemplate : ActMap
             LibraryLogger.Info($"粒子系统: BossVFX {(bossVfx != null ? "加载成功" : "加载失败")}");
         }
 
-        // 清理旧粒子
-        var tree = rootNode.GetTree();
+        // 只遍历当前 NMapScreen，避免给其他 Act 的地图生成粒子
+        var mapScreen = MegaCrit.Sts2.Core.Nodes.Screens.Map.NMapScreen.Instance;
+        if (mapScreen == null || !GodotObject.IsInstanceValid(mapScreen)) return;
+        var tree = mapScreen.GetTree();
         foreach (Node n in tree.GetNodesInGroup("mod_map_effects")) n.QueueFree();
 
-        int count = TraverseAndSpawn(rootNode, bgScene, bossVfx);
+        int count = TraverseAndSpawn(mapScreen, bgScene, bossVfx);
         LibraryLogger.Info($"粒子系统: 遍历完成，生成粒子节点数={count}");
     }
 

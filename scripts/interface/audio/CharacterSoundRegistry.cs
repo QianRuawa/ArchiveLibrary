@@ -1,10 +1,3 @@
-using System.Reflection;
-using Godot;
-using HarmonyLib;
-using MegaCrit.Sts2.Core.Nodes.Audio;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
-using ArchiveLibrary.Scripts.Utils;
-
 namespace ArchiveLibrary.Scripts.Audio;
 
 /// <summary>

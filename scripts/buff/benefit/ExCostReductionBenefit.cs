@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using ArchiveLibrary.Scripts.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -67,7 +66,7 @@ public class ExCostReductionBenefit : ModPowerTemplate, IPowerCategorizable
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new StringVar("ModeDesc", UIHelper.Get("COST_REDUCTION_NORMAL_HALF"))
+        new StringVar("ModeDesc", EntiyArchiveLibrary.UI.GetText("COST_REDUCTION_NORMAL_HALF") ?? "费用向下取半")
     ];
 
     /// <summary>刷新模式描述文字供 smartDescription 显示</summary>
@@ -77,8 +76,8 @@ public class ExCostReductionBenefit : ModPowerTemplate, IPowerCategorizable
         if (DynamicVars["ModeDesc"] is not StringVar sv) return;
 
         sv.StringValue = _mode == ReduceMode.SpecificReduction && _targetCard != null
-            ? string.Format(UIHelper.Get("COST_REDUCTION_SPECIFIC"), _targetCard.Title, Amount)
-            : UIHelper.Get("COST_REDUCTION_NORMAL_HALF");
+            ? string.Format(EntiyArchiveLibrary.UI.GetText("COST_REDUCTION_SPECIFIC") ?? "指定卡牌[gold]{0}[/gold]费用减少[blue]{1}[/blue]点", _targetCard.Title, Amount)
+            : EntiyArchiveLibrary.UI.GetText("COST_REDUCTION_NORMAL_HALF") ?? "费用向下取半";
 
         InvokeDisplayAmountChanged();
     }
