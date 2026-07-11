@@ -87,7 +87,7 @@ public class HealByHitBenefit : ModBadgePower
     {
         return
         [
-            MakeBadge(ExtraIconAmountLabelCorner.BottomLeft, _charges.ToString()),
+            MakeBadge(ExtraIconAmountLabelCorner.TopRight, _charges.ToString()),
         ];
     }
 

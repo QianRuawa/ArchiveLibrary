@@ -27,6 +27,20 @@ public class PenetrationBenefit : ModPowerTemplate, IPowerCategorizable
     /// <summary>当前攻击的穿透量。</summary>
     internal static decimal PendingAmount;
 
+    /// <summary>供外部（如穿甲弹）设置穿透目标与量。</summary>
+    public static void SetPending(Creature target, decimal amount)
+    {
+        PendingTarget = target;
+        PendingAmount = amount;
+    }
+
+    /// <summary>清空穿透状态。</summary>
+    public static void ClearPending()
+    {
+        PendingTarget = null;
+        PendingAmount = 0;
+    }
+
     /// <summary>
     /// 攻击前清空残留状态，再判断是否设置穿透。
     /// 注意：返回 0 不会被加入 modifiers 列表，AfterModifyingDamageAmount 不会触发。

@@ -15,13 +15,15 @@ public static class StunImmunity
     /// <summary>在此注册的怪物 ID 将天生免疫击晕（如召唤物、特定Boss）。</summary>
     public static readonly HashSet<string> ImmuneMonsterIds = new();
 
+    /// <summary>临时绕过击晕免疫的次数（自晕用，用完自动恢复）。</summary>
+    public static int BypassCount { get; set; } = 0;
+
     /// <summary>检查 creature 是否免疫击晕。</summary>
     public static bool IsImmune(Creature creature)
     {
-        // Power 免疫
+        if (BypassCount > 0) { BypassCount--; return false; }
         if (creature.Powers.Any(p => p is IStunImmunePower))
             return true;
-        // 怪物 ID 免疫
         if (creature.Monster?.Id != null && ImmuneMonsterIds.Contains(creature.Monster.Id.Entry))
             return true;
         return false;

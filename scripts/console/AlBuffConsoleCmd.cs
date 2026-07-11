@@ -19,7 +19,7 @@ public class AlBuffConsoleCmd : AbstractConsoleCmd
     public override string CmdName => "albuff";
     public override string Args => "<powerId> [args...]";
     public override string Description => "档案库智能buff给予";
-    public override bool IsNetworked => false;
+    public override bool IsNetworked => true;
     public override bool DebugOnly => false;
 
     private static List<Type>? _powerTypes;

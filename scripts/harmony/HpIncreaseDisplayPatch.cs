@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -37,6 +38,8 @@ static class HpIncreaseDisplayPatch
     private static readonly float _iconOffsetX;
     private static readonly float _iconOffsetY;
     private static readonly Vector2 _iconScale;
+    /// <summary>保存血条原始的格挡框颜色，退出 HpIncrease 状态时恢复。</summary>
+    private static readonly Dictionary<ulong, Color> _originalBlockColors = new();
 
     static HpIncreaseDisplayPatch()
     {
@@ -97,8 +100,11 @@ static class HpIncreaseDisplayPatch
 
         if (hasHpIncrease)
         {
+            // 强制显示格挡框并变色（即使格挡为0），只存一次原始颜色
             if (blockOutline != null)
             {
+                if (!_originalBlockColors.ContainsKey(__instance.GetInstanceId()))
+                    _originalBlockColors[__instance.GetInstanceId()] = blockOutline.Modulate;
                 blockOutline.Visible = true;
                 blockOutline.Modulate = _borderColor;
             }
@@ -108,7 +114,7 @@ static class HpIncreaseDisplayPatch
             {
                 container = CreateDisplayNode(__instance);
                 __instance.AddChild(container);
-                updatePos = true; // 新创建必须定位
+                updatePos = true;
             }
 
             if (updatePos) UpdatePosition(__instance, container);
@@ -117,8 +123,13 @@ static class HpIncreaseDisplayPatch
         }
         else
         {
+            // 恢复原始的格挡框颜色，移除显示节点
             if (blockOutline != null)
-                blockOutline.Modulate = Colors.White;
+            {
+                if (_originalBlockColors.TryGetValue(__instance.GetInstanceId(), out var originalColor))
+                    blockOutline.Modulate = originalColor;
+                _originalBlockColors.Remove(__instance.GetInstanceId());
+            }
             if (existing != null)
                 existing.QueueFree();
         }

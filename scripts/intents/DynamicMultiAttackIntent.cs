@@ -58,7 +58,7 @@ public class DynamicMultiAttackIntent : AttackIntent, ICustomIntentDescription
 
     protected override LocString GetIntentDescription(IEnumerable<Creature> targets, Creature owner)
     {
-        var desc = new LocString("intents", IntentPrefix + ".description");
+        var desc = IntentDescriptionHelper.GetDescription(CustomLocPrefix, "ATTACK.description");
         desc.Add("IsMultiplayer", owner?.CombatState?.RunState.Players.Count > 1);
         desc.Add("Damage", (int)GetSingleDamage(targets, owner));
         desc.Add("Repeat", Repeats);

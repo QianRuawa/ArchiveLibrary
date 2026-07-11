@@ -3,7 +3,7 @@
   "name": "档案库[ArchiveLibrary]",
   "author": "潜入aw",
   "description": "我自己制作的一些优化补充前置",
-  "version": "1.1.4.5",
+  "version": "1.1.5.6",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [{"id": "STS2-RitsuLib", "min_version": "0.4.24"}],

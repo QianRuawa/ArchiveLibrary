@@ -159,16 +159,18 @@ public static class ActMapMusicPlayPatch
     }
 }
 
-[HarmonyPatch(typeof(NRunMusicController), "UpdateMusic")]
-public static class ActCustomMusicPatch
-{
-    static void Postfix()
+    [HarmonyPatch(typeof(NRunMusicController), "UpdateMusic")]
+    public static class ActCustomMusicPatch
     {
-        var s = typeof(RunManager).GetProperty("State", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(RunManager.Instance) as RunState;
-        if (s?.Act is ModActTemplate a && a.CustomMusic is { } m)
-            ActMusicPlayer.Play(m.MusicPath, m.LoopStart, m.LoopEnd, m.FadeIn, m.VolumeDb);
+        static void Postfix()
+        {
+            var s = typeof(RunManager).GetProperty("State", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(RunManager.Instance) as RunState;
+            if (s?.Act is ModActTemplate a && a.CustomMusic is { } m)
+                ActMusicPlayer.Play(m.MusicPath, m.LoopStart, m.LoopEnd, m.FadeIn, m.VolumeDb);
+            else
+                ActMusicPlayer.Stop(0.5f);
+        }
     }
-}
 
 [HarmonyPatch(typeof(NRunMusicController), "StopMusic")]
 public static class ActStopMusicPatch

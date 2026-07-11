@@ -17,10 +17,15 @@ public static class DynamicIconRefreshPatch
 {
     public static void Postfix(NPower __instance)
     {
-        if (__instance.Model is IDynamicIconPower)
+        try
         {
-            __instance.GetNode<TextureRect>("%Icon").Texture = __instance.Model.Icon;
-            __instance.GetNode<CpuParticles2D>("%PowerFlash").Texture = __instance.Model.BigIcon;
+            var model = __instance.Model;
+            if (model is IDynamicIconPower)
+            {
+                __instance.GetNode<TextureRect>("%Icon").Texture = model.Icon;
+                __instance.GetNode<CpuParticles2D>("%PowerFlash").Texture = model.BigIcon;
+            }
         }
+        catch { } // Model 尚未设置时跳过
     }
 }

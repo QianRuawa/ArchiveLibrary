@@ -15,7 +15,7 @@ namespace ArchiveLibrary.Scripts.Powers;
 [RegisterPower]
 public class CostStopParticular : ModPowerTemplate, IPowerCategorizable
 {
-    public string IconId => "CostStop";
+    public string IconId => "CostRegenBan";
     public PowerCategory Category => PowerCategory.Particular;
     public override PowerAssetProfile AssetProfile => this.BuildAssetProfile();
 

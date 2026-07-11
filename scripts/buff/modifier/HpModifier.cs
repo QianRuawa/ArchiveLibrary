@@ -59,15 +59,16 @@ public class HpModifier : ModDynamicIconPower
         return amount;
     }
 
-    /// <summary>将暂存的吸收量从层数中扣除（静默，不触发飘字特效）。</summary>
-    public override Task AfterModifyingHpLostAfterOsty()
+    /// <summary>将暂存的吸收量从层数中扣除（静默，不触发飘字特效）。归零时自动移除。</summary>
+    public override async Task AfterModifyingHpLostAfterOsty()
     {
         if (_pendingDecrement > 0)
         {
             SetAmount(Amount - _pendingDecrement, silent: true);
             _pendingDecrement = 0;
         }
-        return Task.CompletedTask;
+        if (Amount <= 0)
+            await PowerCmd.Remove(this);
     }
 
     /// <summary>

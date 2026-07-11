@@ -58,7 +58,7 @@
     "ARCHIVE_LIBRARY_POWER_DAMAGE_CAP_BENEFIT.smartDescription": "The holder can take at most [blue]{Amount}[/blue] damage from a single hit",
     "ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.title": "EX Cost Reduction",
     "ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.description": "Reduces the cost of the holder's cards\nCost is halved (rounded down)\nConsumes one stack on play",
-    "ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.smartDescription": "Reduces the cost of the holder's cards\n{ModeDesc}\nConsumes one stack on play",
+    "ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.smartDescription": "Reduces the cost of the holder's cards\n{ModeDesc}\nConsumes",
     "ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.title": "Cost Overload",
     "ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.description": "Overdrawn energy is deducted from next turn's energy refresh",
     "ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.smartDescription": "Overdrawn energy is deducted from next turn's energy refresh\nRemaining debt: [blue]{Amount}[/blue]",

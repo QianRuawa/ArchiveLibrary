@@ -1,0 +1,142 @@
+[gd_scene load_steps=24 format=3 uid="uid://btirq4ti3mr15"]
+
+[ext_resource type="Shader" uid="uid://cpnmr8s7213ul" path="res://materials/frames/sprite_heart.gdshader" id="1_0w0bx"]
+[ext_resource type="Texture2D" uid="uid://dfxhsymnyl443" path="res://images/frames/twinkle_star.png" id="1_1macb"]
+
+[sub_resource type="Gradient" id="Gradient_6o0kg"]
+offsets = PackedFloat32Array(0.21710527, 0.7269737)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jyyj"]
+gradient = SubResource("Gradient_6o0kg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_1macb"]
+interpolation_color_space = 2
+colors = PackedColorArray(0.73, 0.38933337, 0, 1, 1, 0.8000001, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0w0bx"]
+gradient = SubResource("Gradient_1macb")
+
+[sub_resource type="Gradient" id="Gradient_ao0t7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j04r0"]
+noise_type = 2
+frequency = 0.0134
+offset = Vector3(-1000, -241.37, 0)
+fractal_gain = 0.2
+fractal_weighted_strength = 1.0
+domain_warp_type = 1
+domain_warp_amplitude = 10.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gfqnq"]
+noise = SubResource("FastNoiseLite_j04r0")
+color_ramp = SubResource("Gradient_ao0t7")
+seamless = true
+seamless_blend_skirt = 0.123
+
+[sub_resource type="Gradient" id="Gradient_7oges"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l0x1l"]
+noise_type = 3
+frequency = 0.0084
+offset = Vector3(-1000, -199.71, 791.67)
+fractal_type = 0
+fractal_weighted_strength = 1.0
+domain_warp_type = 1
+domain_warp_amplitude = 10.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gx0n4"]
+noise = SubResource("FastNoiseLite_l0x1l")
+color_ramp = SubResource("Gradient_7oges")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="Gradient" id="Gradient_2horq"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_geghm"]
+noise_type = 3
+frequency = 0.0084
+offset = Vector3(-1000, -199.71, 791.67)
+fractal_type = 0
+fractal_weighted_strength = 1.0
+domain_warp_type = 1
+domain_warp_amplitude = 10.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_02ety"]
+noise = SubResource("FastNoiseLite_geghm")
+color_ramp = SubResource("Gradient_2horq")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0w0bx"]
+shader = ExtResource("1_0w0bx")
+shader_parameter/flame1_texture = SubResource("NoiseTexture2D_gfqnq")
+shader_parameter/flame2_texture = SubResource("NoiseTexture2D_gx0n4")
+shader_parameter/flame3_texture = SubResource("NoiseTexture2D_02ety")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_0w0bx")
+
+[sub_resource type="Gradient" id="Gradient_ypjdn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rk8ex"]
+gradient = SubResource("Gradient_ypjdn")
+width = 512
+height = 512
+
+[sub_resource type="Gradient" id="Gradient_0w0bx"]
+colors = PackedColorArray(0.797449, 0.53089267, 0, 1, 0.90871197, 0.6659195, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ao0t7"]
+gradient = SubResource("Gradient_0w0bx")
+
+[sub_resource type="Curve" id="Curve_j04r0"]
+_data = [Vector2(0, 0.8462838), 0.0, 0.0, 0, 0, Vector2(0.51394427, 0.7035473), 0.0, 0.0, 0, 0, Vector2(0.91235065, 0.8682432), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gfqnq"]
+curve = SubResource("Curve_j04r0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7oges"]
+particle_flag_disable_z = true
+spread = 93.857
+angular_velocity_min = -82.62002
+angular_velocity_max = 578.36
+radial_velocity_min = 68.63998
+radial_velocity_max = 101.42998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -4.920002
+linear_accel_max = 50.679996
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_gfqnq")
+color_ramp = SubResource("GradientTexture1D_ao0t7")
+
+[node name="Heart" type="TextureRect"]
+clip_children = 1
+offset_left = -150.0
+offset_top = -245.99998
+offset_right = 162.0
+offset_bottom = 132.00002
+texture = SubResource("GradientTexture2D_7jyyj")
+expand_mode = 1
+
+[node name="Sprite_Heart" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0w0bx")
+position = Vector2(155, 181.49998)
+scale = Vector2(0.5976563, 0.7285156)
+texture = SubResource("GradientTexture2D_rk8ex")
+
+[node name="star_specks" type="GPUParticles2D" parent="."]
+position = Vector2(150, 245.99997)
+scale = Vector2(0.99999994, 0.99999994)
+amount = 15
+texture = ExtResource("1_1macb")
+lifetime = 2.0
+preprocess = 18.0
+process_material = SubResource("ParticleProcessMaterial_7oges")

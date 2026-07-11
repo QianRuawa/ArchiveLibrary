@@ -1,3 +1,4 @@
+using ArchiveLibrary.Scripts.Utils;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -23,10 +24,18 @@ public static class PenetrationBlockBypassPatch
         if (!props.IsPoweredAttack())
             return true;
 
+        // 优先用 PenetrationBenefit 的穿透，再用外部穿透（如穿甲弹）
         var target = PenetrationBenefit.PendingTarget;
         var pen = PenetrationBenefit.PendingAmount;
 
-        //LibraryLogger.Info($"[贯穿-DamageBlockInternal] PendingTarget={target?.GetHashCode()} PendingAmount={pen} target==instance={target == __instance}");
+        if (!(target == __instance && pen > 0))
+        {
+            target = PenetrationHelper.ApTarget;
+            pen = PenetrationHelper.ApAmount;
+            PenetrationHelper.Clear();
+        }
+
+        //LibraryLogger.Info($"[贯穿] 目标={__instance.GetHashCode()} Block={__instance.Block} 伤害={amount} 穿透目标={target?.GetHashCode()} 穿透量={pen}");
 
         if (target == __instance && pen > 0)
         {
@@ -37,11 +46,10 @@ public static class PenetrationBlockBypassPatch
             __instance.LoseBlockInternal(blocked);
             __result = blocked;
 
-            //LibraryLogger.Info($"[贯穿] 穿透! bypass={bypass} blockable={blockable} blocked={blocked} originalBlock={__instance.Block + blocked}");
+            //LibraryLogger.Info($"[贯穿] 穿透! bypass={bypass} blockable={blockable} blocked={blocked}");
             return false;
         }
 
-       // LibraryLogger.Info($"[贯穿] 未穿透，正常执行 DamageBlockInternal");
         return true;
     }
 }

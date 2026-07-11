@@ -58,7 +58,7 @@
 	"ARCHIVE_LIBRARY_POWER_DAMAGE_CAP_BENEFIT.smartDescription": "持有者单次受到的伤害最多为[blue]{Amount}[/blue]点",
 	"ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.title": "EX消耗COST减少",
 	"ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.description": "持有者卡牌费用减少\n费用向下取半\n打出后消耗一层",
-	"ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.smartDescription": "持有者卡牌费用减少\n{ModeDesc}\n打出后消耗一层",
+	"ARCHIVE_LIBRARY_POWER_EX_COST_REDUCTION_BENEFIT.smartDescription": "持有者卡牌费用减少\n{ModeDesc}\n打出后消耗",
 	"ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.title": "COST超载",
 	"ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.description": "透支额度将在下回合回复能量时扣除",
 	"ARCHIVE_LIBRARY_POWER_COST_OVERLOAD_BENEFIT.smartDescription": "透支额度将在下回合回复能量时扣除\n剩余透支[blue]{Amount}[/blue]点",

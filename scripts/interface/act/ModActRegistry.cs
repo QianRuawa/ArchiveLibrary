@@ -171,7 +171,8 @@ public static class ActDoubleBossFixPatch
                     if (rng != null)
                     {
                         var second = rng.NextItem(glory.AllBossEncounters
-                            .Where(e => e.Id != glory.BossEncounter.Id));
+                            .Where(e => e.Id != glory.BossEncounter.Id)
+                            .Where(e => CustomBossRegistry.IsBossEnabledForEncounter(e)));
                         if (second != null)
                         {
                             glory.SetSecondBossEncounter(second);
